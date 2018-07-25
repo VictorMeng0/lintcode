@@ -4,28 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FizzBuzz {
+    public static void main(String[] args) {
+        List<String> list = new FizzBuzz().fizzBuzz(15);
+        for(String str:list)
+            System.out.println(str);
+    }
     public List<String> fizzBuzz(int n) {
         // write your code here
-        int[][] tmp = new int[n][2];
-        for(int i = 1;i<=n;i++){
-            if(i%3==0) tmp[i-1][0]=1;
-            if(i%5==0) tmp[i-1][1]=1;
-        }
+
         List<String> res= new ArrayList<String>(n);
-        for(int i = 0;i<tmp.length;i++){
-            String sub = "";
-            if(tmp[i][0]==0&&tmp[i][1]==0){
-                sub+=(i+1);
-                res.add(sub);
-                continue;
-            }
-            if(tmp[i][0]==1){
-                sub+="fizz";
-            }
-            if(tmp[i][1]==1){
-                sub+=" buzz";
-            }
-            res.add(sub);
+        for(int i = 1;i<=n;i++){
+            if(i%15==0) res.add("fizz buzz");
+            else if(i%3==0) res.add("fizz");
+            else if(i%5==0) res.add("buzz");
+            else res.add(i+"");
         }
         return res;
     }
