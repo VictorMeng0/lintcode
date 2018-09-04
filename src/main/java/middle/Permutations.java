@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Permutations {
     public static void main(String[] args) {
-        int[] res = {1,2,3,4,5};
+        int[] res = {1,2,3,4};
         List<List<Integer>> list = new Permutations().permute(res);
         System.out.println(list);
     }

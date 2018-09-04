@@ -1,25 +1,30 @@
 package middle;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by menghan on 2018/8/31.
  */
-// something wrong,to be done
 public class PreviousPermutation {
+    public static void main(String[] args) {
+        System.out.println(new PreviousPermutation().previousPermuation(Arrays.asList(2,1,1)));
+    }
     public List<Integer> previousPermuation(List<Integer> nums) {
         // write your code here
-        for(int i=0;i<nums.size();i++){
-            int j = i+1;
-            while(j<nums.size()&&nums.get(i)<nums.get(j)) j++;
-            if(j == nums.size()){
-                continue;
-            }
-            swap(nums,i,j);
-            reverse(nums,i+1,nums.size()-1);
+        if(nums.size()<=1) return nums;
+        int j = nums.size()-1;
+        for(;j>0;j--){
+            if(nums.get(j-1)>nums.get(j)) break;
+        }
+        if(j==0){
+            reverse(nums,0,nums.size()-1);
             return nums;
         }
-        reverse(nums,0,nums.size()-1);
+        int i = nums.size()-1;
+        while(nums.get(i)>=nums.get(j-1)) i--;
+        swap(nums,j-1,i);
+        reverse(nums,j,nums.size()-1);
         return nums;
     }
     public void swap(List<Integer> list,int i,int j){
