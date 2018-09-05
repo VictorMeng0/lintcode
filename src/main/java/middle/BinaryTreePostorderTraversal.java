@@ -38,5 +38,6 @@ public class BinaryTreePostorderTraversal {
             else rot = rot.right;
         }
         return list;
+
     }
 }
